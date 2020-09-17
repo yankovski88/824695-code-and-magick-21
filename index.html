@@ -180,6 +180,21 @@
   </div>
 </template>
 
+<script>
+  var fireballSize = 22;
+  var getFireballSpeed = isMovingLeft ? 2 : 5;
+  var wizardSpeed = 3;
+  var wizardWidth = 70;
+  var getWizardHeight = function () {
+    return 1.337 * wizardWidth
+  };
+  var getWizardX = function (widthX) {
+    return (widthX - wizardWidth) / 2;
+  };
+  var getWizardY = function (heightY) {
+    return heightY / 3;
+  };
+</script>
 <script src="js/game.js"></script>
 
 </body>
