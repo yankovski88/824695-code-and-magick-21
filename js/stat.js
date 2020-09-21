@@ -63,7 +63,6 @@ window.renderStatistics = function (ctx, players, times) {
 
   ctx.fillStyle = `#000`;
   ctx.font = `16px PT Mono`;
-  // ctx.textBaseline = 'hanging';
   const maxTime = getMaxElement(times);
 
   ctx.fillStyle = `#000`;
