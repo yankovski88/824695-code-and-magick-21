@@ -27,9 +27,14 @@ const getMaxElement = function (arr) {
   return maxElement;
 };
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+const getRandomColor = function (maxNumber = 100) {
+  if (maxNumber > 100) {
+    maxNumber = 100;
+  }
+  const colorNumber = Math.floor(Math.random() * Math.floor(maxNumber));
+  return `hsl(248, ${colorNumber}%, 57%)`;
+};
+
 
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(
@@ -89,8 +94,7 @@ window.renderStatistics = function (ctx, players, times) {
           (-(BAR_HEIGHT) * Math.round(times[i])) / Math.round(maxTime)
       );
     } else {
-      const color = getRandomInt(100);
-      ctx.fillStyle = `hsl(248, ${color}%, 57%)`;
+      ctx.fillStyle = getRandomColor();
       ctx.fillRect(
           CLOUD_X + GAP + TEXT_WIDTH + (GAP + TEXT_WIDTH) * i,
           CLOUD_Y + CLOUD_HEIGHT - GAP * 4,
@@ -98,6 +102,5 @@ window.renderStatistics = function (ctx, players, times) {
           (-(BAR_HEIGHT) * times[i]) / Math.round(maxTime)
       );
     }
-
   }
 };
