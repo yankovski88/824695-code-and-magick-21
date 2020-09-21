@@ -15,6 +15,23 @@ const renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+const getRandomColor = function (maxNumber = 100) {
+  if (maxNumber > 100) {
+    maxNumber = 100;
+  }
+  const colorNumber = Math.floor(Math.random() * Math.floor(maxNumber));
+  return `hsl(248, ${colorNumber}%, 57%)`;
+};
+
+const renderColumn = function (x, y, barWidth, barHeight, colorColomn, ctx) {
+  ctx.fillStyle = colorColomn;
+  ctx.fillRect(
+      x,
+      y,
+      barWidth,
+      barHeight);
+};
+
 const getMaxElement = function (arr) {
   let maxElement = Math.round(arr[0]);
 
@@ -26,15 +43,6 @@ const getMaxElement = function (arr) {
 
   return maxElement;
 };
-
-const getRandomColor = function (maxNumber = 100) {
-  if (maxNumber > 100) {
-    maxNumber = 100;
-  }
-  const colorNumber = Math.floor(Math.random() * Math.floor(maxNumber));
-  return `hsl(248, ${colorNumber}%, 57%)`;
-};
-
 
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(
@@ -84,21 +92,20 @@ window.renderStatistics = function (ctx, players, times) {
         CLOUD_Y + CLOUD_HEIGHT - GAP * 2
     );
 
-    const renderColumn = function (j, colorColomn) {
-      ctx.fillStyle = colorColomn;
-      ctx.fillRect(
-          CLOUD_X + GAP + TEXT_WIDTH + (GAP + TEXT_WIDTH) * j,
+    if (players[i] === `Вы`) {
+      renderColumn(CLOUD_X + GAP + TEXT_WIDTH + (GAP + TEXT_WIDTH) * i,
           CLOUD_Y + CLOUD_HEIGHT - GAP * 4,
           BAR_WIDTH,
-          (-(BAR_HEIGHT) * Math.round(times[j])) / Math.round(maxTime)
-      );
-    };
-
-    if (players[i] === `Вы`) {
-      ctx.fillStyle = `rgba(255, 0, 0, 1)`;
-      renderColumn(i);
+          (-(BAR_HEIGHT) * Math.round(times[i])) / Math.round(maxTime),
+          `rgba(255, 0, 0, 1)`,
+          ctx);
     } else {
-      renderColumn(i, getRandomColor());
+      renderColumn(CLOUD_X + GAP + TEXT_WIDTH + (GAP + TEXT_WIDTH) * i,
+          CLOUD_Y + CLOUD_HEIGHT - GAP * 4,
+          BAR_WIDTH,
+          (-(BAR_HEIGHT) * Math.round(times[i])) / Math.round(maxTime),
+          getRandomColor(),
+          ctx);
     }
   }
 };
