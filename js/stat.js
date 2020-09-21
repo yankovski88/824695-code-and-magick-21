@@ -84,7 +84,8 @@ window.renderStatistics = function (ctx, players, times) {
         CLOUD_Y + CLOUD_HEIGHT - GAP * 2
     );
 
-    const renderColumn = function (j) {
+    const renderColumn = function (j, colorColomn) {
+      ctx.fillStyle = colorColomn;
       ctx.fillRect(
           CLOUD_X + GAP + TEXT_WIDTH + (GAP + TEXT_WIDTH) * j,
           CLOUD_Y + CLOUD_HEIGHT - GAP * 4,
@@ -97,8 +98,7 @@ window.renderStatistics = function (ctx, players, times) {
       ctx.fillStyle = `rgba(255, 0, 0, 1)`;
       renderColumn(i);
     } else {
-      ctx.fillStyle = getRandomColor();
-      renderColumn(i);
+      renderColumn(i, getRandomColor());
     }
   }
 };
