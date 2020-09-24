@@ -1,10 +1,10 @@
 "use strict";
 
-const WISARD_NAMES = [`Иван`, `Хуан Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
-const SUR_NAME = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
-const COAT_COLOR = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`,
+const WIZARD_NAMES = [`Иван`, `Хуан Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
+const WIZARD_SURNAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
+const COAT_COLORS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`,
   `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
-const EYES_COLOR = [`black`, `red`, `blue`, `yellow`, `green`];
+const EYES_COLORS = [`black`, `red`, `blue`, `yellow`, `green`];
 
 const setup = document.querySelector(`.setup`);
 setup.classList.remove(`hidden`);
@@ -22,28 +22,28 @@ function getRandomInt(max) {
 
 const wizards = [
   {
-    name: WISARD_NAMES[getRandomInt(WISARD_NAMES.length)],
-    surname: SUR_NAME[getRandomInt(SUR_NAME.length)],
-    coatColor: COAT_COLOR[getRandomInt(COAT_COLOR.length)],
-    eyesColor: EYES_COLOR[getRandomInt(EYES_COLOR.length)],
+    name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
+    surname: WIZARD_SURNAMES[getRandomInt(WIZARD_SURNAMES.length)],
+    coatColor: COAT_COLORS[getRandomInt(COAT_COLORS.length)],
+    eyesColor: EYES_COLORS[getRandomInt(EYES_COLORS.length)],
   },
   {
-    name: WISARD_NAMES[getRandomInt(WISARD_NAMES.length)],
-    surname: SUR_NAME[getRandomInt(SUR_NAME.length)],
-    coatColor: COAT_COLOR[getRandomInt(COAT_COLOR.length)],
-    eyesColor: EYES_COLOR[getRandomInt(EYES_COLOR.length)],
+    name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
+    surname: WIZARD_SURNAMES[getRandomInt(WIZARD_SURNAMES.length)],
+    coatColor: COAT_COLORS[getRandomInt(COAT_COLORS.length)],
+    eyesColor: EYES_COLORS[getRandomInt(EYES_COLORS.length)],
   },
   {
-    name: WISARD_NAMES[getRandomInt(WISARD_NAMES.length)],
-    surname: SUR_NAME[getRandomInt(SUR_NAME.length)],
-    coatColor: COAT_COLOR[getRandomInt(COAT_COLOR.length)],
-    eyesColor: EYES_COLOR[getRandomInt(EYES_COLOR.length)],
+    name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
+    surname: WIZARD_SURNAMES[getRandomInt(WIZARD_SURNAMES.length)],
+    coatColor: COAT_COLORS[getRandomInt(COAT_COLORS.length)],
+    eyesColor: EYES_COLORS[getRandomInt(EYES_COLORS.length)],
   },
   {
-    name: WISARD_NAMES[getRandomInt(WISARD_NAMES.length)],
-    surname: SUR_NAME[getRandomInt(SUR_NAME.length)],
-    coatColor: COAT_COLOR[getRandomInt(COAT_COLOR.length)],
-    eyesColor: EYES_COLOR[getRandomInt(EYES_COLOR.length)],
+    name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
+    surname: WIZARD_SURNAMES[getRandomInt(WIZARD_SURNAMES.length)],
+    coatColor: COAT_COLORS[getRandomInt(COAT_COLORS.length)],
+    eyesColor: EYES_COLORS[getRandomInt(EYES_COLORS.length)],
   }
 ];
 
