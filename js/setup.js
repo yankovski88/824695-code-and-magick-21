@@ -47,16 +47,26 @@ const wizards = [
   }
 ];
 
-const renderWizards = function (wizardsArr) {
-  for (let i = 0; i < wizards.length; i++) {
-    let wizardTemplate = similarWizardTemplate.cloneNode(true);
-    setupSimilarList.appendChild(wizardTemplate);
-    similarWizardTemplate.querySelector(`.setup-similar-label`).textContent = `${wizardsArr[i].name} ${wizardsArr[i].surname}`;
-    similarWizardTemplate.querySelector(`.wizard-coat`).style.fill = wizardsArr[i].coatColor;
-    similarWizardTemplate.querySelector(`.wizard-eyes`).style.fill = wizardsArr[i].eyesColor;
-  }
+// const renderWizard = function (wizardsArr) {
+//   for (let i = 0; i < wizards.length; i++) {
+//     let wizardTemplate = similarWizardTemplate.cloneNode(true);
+//     setupSimilarList.appendChild(wizardTemplate);
+//     similarWizardTemplate.querySelector(`.setup-similar-label`).textContent = `${wizardsArr[i].name} ${wizardsArr[i].surname}`;
+//     similarWizardTemplate.querySelector(`.wizard-coat`).style.fill = wizardsArr[i].coatColor;
+//     similarWizardTemplate.querySelector(`.wizard-eyes`).style.fill = wizardsArr[i].eyesColor;
+//   }
+// };
+const renderWizard = function (wizardsArr) {
+  let wizardTemplate = similarWizardTemplate.cloneNode(true);
+  wizardTemplate.querySelector(`.setup-similar-label`).textContent = `${wizardsArr.name} ${wizardsArr.surname}`;
+  wizardTemplate.querySelector(`.wizard-coat`).style.fill = wizardsArr.coatColor;
+  wizardTemplate.querySelector(`.wizard-eyes`).style.fill = wizardsArr.eyesColor;
+  return wizardTemplate;
 };
-
-renderWizards(wizards);
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < wizards.length; i++) {
+  fragment.appendChild(renderWizard(wizards[i]));
+}
+setupSimilarList.appendChild(fragment);
 
 
