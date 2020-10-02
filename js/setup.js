@@ -7,7 +7,7 @@ const COAT_COLORS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 1
 const EYES_COLORS = [`black`, `red`, `blue`, `yellow`, `green`];
 
 const setup = document.querySelector(`.setup`);
-setup.classList.remove(`hidden`);
+// setup.classList.remove(`hidden`);
 
 const setupSimilarList = document.querySelector(`.setup-similar-list`);
 
@@ -47,15 +47,6 @@ const wizards = [
   }
 ];
 
-// const renderWizard = function (wizardsArr) {
-//   for (let i = 0; i < wizards.length; i++) {
-//     let wizardTemplate = similarWizardTemplate.cloneNode(true);
-//     setupSimilarList.appendChild(wizardTemplate);
-//     similarWizardTemplate.querySelector(`.setup-similar-label`).textContent = `${wizardsArr[i].name} ${wizardsArr[i].surname}`;
-//     similarWizardTemplate.querySelector(`.wizard-coat`).style.fill = wizardsArr[i].coatColor;
-//     similarWizardTemplate.querySelector(`.wizard-eyes`).style.fill = wizardsArr[i].eyesColor;
-//   }
-// };
 const renderWizard = function (wizardsArr) {
   let wizardTemplate = similarWizardTemplate.cloneNode(true);
   wizardTemplate.querySelector(`.setup-similar-label`).textContent = `${wizardsArr.name} ${wizardsArr.surname}`;
@@ -69,4 +60,104 @@ for (let i = 0; i < wizards.length; i++) {
 }
 setupSimilarList.appendChild(fragment);
 
+const setupOpen = document.querySelector(`.setup-open`);
+const setupClose = document.querySelector(`.setup-close`);
+const setupOpenIcon = document.querySelector(`.setup-open-icon`);
+
+
+let onPopupEscPress = function (evt) {
+  if (evt.code === `Escape`) {
+    evt.preventDefault();
+    closePopup();
+  }
+};
+
+const openPopup = function () {
+  setup.classList.remove(`hidden`);
+  document.addEventListener(`keydown`, onPopupEscPress);
+};
+setupOpen.addEventListener(`click`, function () {
+  openPopup();
+});
+
+
+const closePopup = function () {
+  setup.classList.add(`hidden`);
+  document.removeEventListener(`keydown`, onPopupEscPress);
+};
+
+setupClose.addEventListener(`click`, function () {
+  closePopup();
+});
+
+const onPopupPressEnterOnClose = function (evt) {
+  if (evt.code === `Enter`) {
+    closePopup();
+  }
+};
+
+setupClose.addEventListener(`keydown`, function (evt) {
+  onPopupPressEnterOnClose(evt);
+});
+
+
+setupOpenIcon.addEventListener(`keydown`, function () {
+  openPopup();
+});
+
+// Не сделал: Задание 1.2.  Если фокус находится на форме ввода имени, то окно закрываться не должно.
+// Не сделал: Задание 1.4, 1.5
+
+let coatColors = [`rgb (101, 137, 164)`,
+  `rgb(241, 43, 107)`,
+  `rgb(146, 100, 161)`,
+  `rgb(56, 159, 117)`,
+  `rgb(215, 210, 55)`,
+  `rgb(0, 0, 0)`];
+
+const setupWizard = document.querySelector(`.setup-wizard`);
+const wizardCoat = setupWizard.querySelector(`.wizard-coat`);
+const coatColor = document.querySelector(`#coat-color`);
+const getColorOfCoat = function () {
+  const coatColorWizard = coatColors[getRandomInt(coatColors.length)];
+  wizardCoat.style.fill = coatColorWizard;
+  coatColor.value = coatColorWizard;
+};
+wizardCoat.addEventListener(`click`, function () {
+  getColorOfCoat();
+});
+
+const eyeColors = [
+  `black`,
+  `red`,
+  `blue`,
+  `yellow`,
+  `green`
+];
+const eyesColor = document.querySelector(`#eyes-color`);
+const wizardEyes = setupWizard.querySelector(`.wizard-eyes`);
+const getEyeColor = function () {
+  const wizardsEyesColor = eyeColors[getRandomInt(eyeColors.length)];
+  wizardEyes.style.fill = wizardsEyesColor;
+  eyesColor.value = wizardsEyesColor;
+};
+wizardEyes.addEventListener(`click`, function () {
+  getEyeColor();
+});
+
+const fireballColors = [`#ee4830`,
+  `#30a8ee`,
+  `#5ce6c0`,
+  `#e848d5`,
+  `#e6e848`];
+const setupFireballWrap = document.querySelector(`.setup-fireball-wrap`);
+const fireballColor = document.querySelector(`#fireball-color`);
+const getFireballColor = function () {
+  const colorFireball = fireballColors[getRandomInt(fireballColors.length)];
+  setupFireballWrap.style.backgroundColor = colorFireball;
+  fireballColor.value = colorFireball;
+};
+setupFireballWrap.addEventListener(`click`, function () {
+  getFireballColor();
+});
 
