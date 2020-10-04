@@ -6,14 +6,14 @@ const COAT_COLORS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 1
   `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
 const EYES_COLORS = [`black`, `red`, `blue`, `yellow`, `green`];
 
-let coatColors = [`rgb (101, 137, 164)`,
+const WIZARD_COAT_COLORS = [`rgb (101, 137, 164)`,
   `rgb(241, 43, 107)`,
   `rgb(146, 100, 161)`,
   `rgb(56, 159, 117)`,
   `rgb(215, 210, 55)`,
   `rgb(0, 0, 0)`];
 
-const eyeColors = [
+const WIZARD_EYE_COLORS = [
   `black`,
   `red`,
   `blue`,
@@ -21,7 +21,7 @@ const eyeColors = [
   `green`
 ];
 
-const fireballColors = [`#ee4830`,
+const WIZARD_FIREBALL_COLORS = [`#ee4830`,
   `#30a8ee`,
   `#5ce6c0`,
   `#e848d5`,
@@ -127,7 +127,7 @@ const setupWizard = document.querySelector(`.setup-wizard`);
 const wizardCoat = setupWizard.querySelector(`.wizard-coat`);
 const coatColor = document.querySelector(`#coat-color`);
 const getColorOfCoat = function () {
-  const coatColorWizard = coatColors[getRandomInt(coatColors.length)];
+  const coatColorWizard = WIZARD_COAT_COLORS[getRandomInt(WIZARD_COAT_COLORS.length)];
   wizardCoat.style.fill = coatColorWizard;
   coatColor.value = coatColorWizard;
 };
@@ -139,7 +139,7 @@ wizardCoat.addEventListener(`click`, function () {
 const eyesColor = document.querySelector(`#eyes-color`);
 const wizardEyes = setupWizard.querySelector(`.wizard-eyes`);
 const getEyeColor = function () {
-  const wizardsEyesColor = eyeColors[getRandomInt(eyeColors.length)];
+  const wizardsEyesColor = WIZARD_EYE_COLORS[getRandomInt(WIZARD_EYE_COLORS.length)];
   wizardEyes.style.fill = wizardsEyesColor;
   eyesColor.value = wizardsEyesColor;
 };
@@ -150,7 +150,7 @@ wizardEyes.addEventListener(`click`, function () {
 const setupFireballWrap = document.querySelector(`.setup-fireball-wrap`);
 const fireballColor = document.querySelector(`#fireball-color`);
 const getFireballColor = function () {
-  const colorFireball = fireballColors[getRandomInt(fireballColors.length)];
+  const colorFireball = WIZARD_FIREBALL_COLORS[getRandomInt(WIZARD_FIREBALL_COLORS.length)];
   setupFireballWrap.style.backgroundColor = colorFireball;
   fireballColor.value = colorFireball;
 };
