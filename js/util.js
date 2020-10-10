@@ -20,13 +20,14 @@
     return colorRandom;
   };
 
-  const renderColorFillForElement = function (elementHTML, elementValueHTML, colorWizard) {
-    elementHTML.style.fill = colorWizard;
-    elementValueHTML.value = colorWizard;
-  };
-  const renderColorBackgroundForElement = function (elementHTML, elementValueHTML, colorWizard) {
-    elementHTML.style.backgroundColor = colorWizard;
-    elementValueHTML.value = colorWizard;
+  const renderColorForElement = function (elementHTML, elementValueHTML, colorWizard) {
+    if (elementHTML.tagName.toLowerCase() === `div`) {
+      elementHTML.style.backgroundColor = colorWizard;
+      elementValueHTML.value = colorWizard;
+    } else {
+      elementHTML.style.fill = colorWizard;
+      elementValueHTML.value = colorWizard;
+    }
   };
 
   function getRandomInt(max) {
@@ -36,8 +37,7 @@
     isEscEvent,
     isEnterEvent,
     getRandomColor,
-    renderColorFillForElement,
-    renderColorBackgroundForElement,
+    renderColorForElement,
     getRandomInt
   };
 })();
