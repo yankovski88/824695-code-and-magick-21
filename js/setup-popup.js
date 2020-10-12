@@ -6,37 +6,30 @@
   const setupOpenIcon = document.querySelector(`.setup-open-icon`);
   const setupUserName = document.querySelector(`.setup-user-name`);
 
-  const onPopupEscPress = function (evt) {
-    if (setupUserName !== document.activeElement) {
-      window.util.isEscEvent(evt, closePopup);
-      evt.preventDefault();
-      // console.log(`evt.preventDef ESC`);
-      // При нажитии Enter window.util.isEnterEvent(evt, openPopup) автоматически выоплняется этот код
-      // console.log(`evt.preventDef ESC` ), хоть должен выполняться после нажатия ESC почему так?
-      // Считаю если есть более одного  действия например в isEscEvent, то этим методом нельзя пользоваться. Правильно?
-      // Крайний случай это заранее расчитвыат сколько будет парметров, но это уже бедет плохой код.
-    }
+
+  const closePopup = function () {
+    window.setupWizards.setup.classList.add(`hidden`);
+    document.removeEventListener(`keydown`, onPopupEscPress);
   };
-
-  setupOpen.addEventListener(`click`, function () {
-    openPopup();
-  });
-
-  setupOpenIcon.addEventListener(`keydown`, function (evt) {
-    window.util.isEnterEvent(evt, openPopup);
-    evt.preventDefault();
-  });
 
   const openPopup = function () {
     window.setupWizards.setup.classList.remove(`hidden`);
     document.addEventListener(`keydown`, onPopupEscPress);
   };
 
-
-  const closePopup = function () {
-    window.setupWizards.setup.classList.add(`hidden`);
-    document.removeEventListener(`keydown`, onPopupEscPress);
+  const onPopupEscPress = function (evt) {
+    if (setupUserName !== document.activeElement) {
+      window.util.isEscEvent(evt, closePopup);
+    }
   };
+
+
+  setupOpen.addEventListener(`click`, openPopup);
+
+  const onSetupOpenIconKeydownEnter = function (evt) {
+    window.util.isEnterEvent(evt, openPopup);
+  };
+  setupOpenIcon.addEventListener(`keydown`, onSetupOpenIconKeydownEnter);
 
   setupClose.addEventListener(`keydown`, function (evt) {
     if (evt.code === `Enter`) {
@@ -44,14 +37,12 @@
     }
   });
 
-  setupClose.addEventListener(`click`, function () {
-    closePopup();
-  });
+  setupClose.addEventListener(`click`, closePopup);
   const setup = document.querySelector(`.setup`);
 
   const dialogHandle = setup.querySelector(`.upload`);
 
-  dialogHandle.addEventListener(`mousedown`, function (evt) {
+  const onDialogHandleMousedown = function (evt) {
     evt.preventDefault();
 
     let startCoords = {
@@ -97,7 +88,8 @@
 
     document.addEventListener(`mousemove`, onMouseMove);
     document.addEventListener(`mouseup`, onMouseUp);
-  });
+  };
+  dialogHandle.addEventListener(`mousedown`, onDialogHandleMousedown);
 
 
 })();
