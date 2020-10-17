@@ -26,4 +26,6 @@
 
   };
   setupFireballWrap.addEventListener(`click`, onSetupFireballWrap);
+
+
 })();
