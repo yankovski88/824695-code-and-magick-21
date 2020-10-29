@@ -24,7 +24,7 @@
     `#e6e848`];
 
 
-  const MAX_SIMILAR_WIZARD_COUNT = 4;
+  // const MAX_SIMILAR_WIZARD_COUNT = 4;
 
   const setup = document.querySelector(`.setup`);
 
@@ -33,7 +33,7 @@
   const setupSimilar = document.querySelector(`.setup-similar`);
   setupSimilar.classList.remove(`hidden`);
 
-  const similarWizardTemplate = document.querySelector(`#similar-wizard-template`).content.querySelector(`.setup-similar-item`);
+  // const similarWizardTemplate = document.querySelector(`#similar-wizard-template`).content.querySelector(`.setup-similar-item`);
 
   const renderWizard = function (wizard) {
     let wizardTemplate = similarWizardTemplate.cloneNode(true);
